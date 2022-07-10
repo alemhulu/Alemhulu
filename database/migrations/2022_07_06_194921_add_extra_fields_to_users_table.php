@@ -13,10 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('grades', function (Blueprint $table) {
-            $table->id();
-            $table->string('name')->unique();
-            $table->timestamps();
+        Schema::table('users', function (Blueprint $table) {
+            $table->foreignId('role_id')->nullable()->constrained();
+            
+            // $table->foreignId('grade_id')->nullable()->constrained();
+            // $table->string('teacher_qualification')->nullable();
         });
     }
 
@@ -27,6 +28,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('grades');
+        Schema::table('users', function (Blueprint $table) {
+           
+        });
     }
 };
